@@ -768,6 +768,7 @@ const renderCharts = (data: PRData[], selectedYear: string | null, selectedMonth
                 {`Editors Leaderboard`}
                 <CopyLink link={`https://eipsinsight.com/Editors#Leaderboard`} />
               </Heading>
+              </section>
             <CSVLink
               data={csvData.length ? csvData : []} 
               filename={`editors_yearly_data.csv`}
@@ -799,6 +800,7 @@ const renderCharts = (data: PRData[], selectedYear: string | null, selectedMonth
               {`Reviewers Leaderboard`}
               <CopyLink link={`https://eipsinsight.com/Reviewers#Leaderboard`} />
             </Heading>
+              </section>
             
             <CSVLink
               data={csvData.length ? csvData : []} 
