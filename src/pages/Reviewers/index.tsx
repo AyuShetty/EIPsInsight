@@ -18,6 +18,7 @@ import CopyLink from "@/components/CopyLink";
 import { useRouter } from "next/router";
 import { DownloadIcon } from "@chakra-ui/icons";
 import LastUpdatedDateTime from "@/components/LastUpdatedDateTime";
+import { useTableOfContents } from "@/lib/useTableOfContents"; // adjust the path
 // import { Bar } from "@ant-design/charts";
 // import { Line } from '@ant-design/charts';  // Import the Line chart component
 
