@@ -763,10 +763,11 @@ const renderCharts = (data: PRData[], selectedYear: string | null, selectedMonth
         {/* Editors Chart */}
         <Box width={{ base: "100%", md: "45%" }} padding="1rem" bgColor={bg} borderRadius="0.55rem">
           <Flex justifyContent="space-between" alignItems="center" marginBottom="0.5rem">
-            <Heading size="md" color="black">
-              {`Editors Leaderboard`}
-              <CopyLink link={`https://eipsinsight.com/Editors#Leaderboard`} />
-            </Heading>
+            <section id="Editors Leaderboard">
+              <Heading size="md" color="black">
+                {`Editors Leaderboard`}
+                <CopyLink link={`https://eipsinsight.com/Editors#Leaderboard`} />
+              </Heading>
             <CSVLink
               data={csvData.length ? csvData : []} 
               filename={`editors_yearly_data.csv`}
@@ -793,10 +794,12 @@ const renderCharts = (data: PRData[], selectedYear: string | null, selectedMonth
         {/* Reviewers Chart */}
         <Box width={{ base: "100%", md: "45%" }} padding="1rem" bgColor={bg} borderRadius="0.55rem">
           <Flex justifyContent="space-between" alignItems="center" marginBottom="0.5rem">
-            <Heading size="md" color="black">
+            <section id="Reviewers Leaderboard">
+              <Heading size="md" color="black">
               {`Reviewers Leaderboard`}
               <CopyLink link={`https://eipsinsight.com/Reviewers#Leaderboard`} />
             </Heading>
+            
             <CSVLink
               data={csvData.length ? csvData : []} 
               filename={`reviewers_yearly_data.csv`}
@@ -1266,6 +1269,7 @@ const renderCharts3 = (reviewsdata: PRData[]) => {
 
   return (
     <div>
+      <section id="editors">
        <Heading
               as="h3"
               size="lg"
@@ -1276,6 +1280,7 @@ const renderCharts3 = (reviewsdata: PRData[]) => {
         >
           Editors
         </Heading>
+        </section>
       
       <div
         style={{
@@ -1287,6 +1292,7 @@ const renderCharts3 = (reviewsdata: PRData[]) => {
       >
         {editorCharts}
       </div>
+      <section id="reviewers">
       <Heading
               as="h3"
               size="lg"
@@ -1297,6 +1303,7 @@ const renderCharts3 = (reviewsdata: PRData[]) => {
         >
         Reviewers
       </Heading>
+      </section>
       <div
         style={{
           display: "flex",
@@ -1926,11 +1933,12 @@ const router = useRouter();
         padding={{ base: 1, md: 4 }}
         margin={{ base: 2, md: 4 }}
         >
+          <section id="Editors & Reviewers Leaderboard">
           <Heading
             size="xl"
             marginBottom={10}
             textAlign="center" style={{ color: '#42a5f5', fontSize: '2.5rem', fontWeight: 'bold', }} > Editors & Reviewers Leaderboard</Heading>
-
+          </section>
 
 <Box
       pl={4}
@@ -1940,6 +1948,7 @@ const router = useRouter();
       marginBottom={2}
     >
       <Flex justify="space-between" align="center">
+        <section id="Editors & Reviewers Leaderboard FAQ">
         <Heading
           as="h3"
           size="lg"
@@ -1947,6 +1956,7 @@ const router = useRouter();
           color={useColorModeValue("#3182CE", "blue.300")}
         > Editors & Reviewers Leaderboard FAQ
         </Heading>
+          </section>
         <Box
   bg="blue" // Gray background
   borderRadius="md" // Rounded corners
@@ -2143,6 +2153,7 @@ const router = useRouter();
             <Box id="ActivityTimeline" className="w-full">
 
             <Flex justifyContent="space-between" alignItems="center" marginBottom="0.5rem">
+             <section id="Active Editors Timeline Scatterplot">
             <Heading
               as="h3"
               size="lg"
@@ -2152,6 +2163,7 @@ const router = useRouter();
               color={useColorModeValue("#3182CE", "blue.300")}
             > Active Editors Timeline Scatterplot <CopyLink link={`https://eipsinsight.com/Reviewers#ActivityTimeline`} />
             </Heading> 
+            </section>
               <Flex alignItems="center">
                 <Button
                   colorScheme="blue"
@@ -2308,9 +2320,11 @@ const router = useRouter();
   {/* The part that is breaking start */}
   <Box id="Monthly" className={"w-full"}>
     <Flex justifyContent="space-between" alignItems="center" marginBottom="0.5rem">
+      <section id="PRs Reviewed">
       <Heading size="md" color="black">
         {`PRs Reviewed (Monthly, since 2015)`}<CopyLink link={`https://eipsinsight.com/Reviewers#Monthly`} />
       </Heading>
+      </section>
       <Flex alignItems="center">
         <CSVLink
           data={csvData.length ? csvData : []}
@@ -2849,6 +2863,7 @@ const router = useRouter();
               // }}
             >
             <Box id="Speciality" className="w-full">
+            <section id="Active Editors PR reviews in each Repository">
             <Heading
               as="h3"
               size="lg"
@@ -2857,7 +2872,8 @@ const router = useRouter();
               fontWeight="bold"
               color={useColorModeValue("#3182CE", "blue.300")}
             > Active Editors PR reviews in each Repository <CopyLink link={`https://eipsinsight.com/Reviewers#Speciality`} />
-            </Heading>
+            </Heading>\
+             </section>
               {editorsSpecialityChart()}
             </Box>
           </Box>
