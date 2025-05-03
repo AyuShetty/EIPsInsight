@@ -1,0 +1,349 @@
+[33mcommit 198768841cb2227ad19592450c7ebc5559148362[m[33m ([m[1;32mmain[m[33m)[m
+Author: AyuShetty <ayush.shetty135@gmail.com>
+Date:   Sun May 4 02:19:19 2025 +0530
+
+    Changes Made: add navigation sidebar
+
+[1mdiff --git a/env b/env[m
+[1mnew file mode 100644[m
+[1mindex 0000000..58613ca[m
+[1m--- /dev/null[m
+[1m+++ b/env[m
+[36m@@ -0,0 +1,3 @@[m
+[32m+[m[32mMONGODB_URI = mongodb+srv://avarch:eips_24@cluster0.hpksunr.mongodb.net/?retryWrites=true&w=majority[m
+[32m+[m[32mACCESS_TOKEN = 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[m
+[32m+[m[32mNEXT_PUBLIC_ACCESS_TOKEN = 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[m
+\ No newline at end of file[m
+[1mdiff --git a/package-lock.json b/package-lock.json[m
+[1mindex be030b7..2e9bb6e 100644[m
+[1m--- a/package-lock.json[m
+[1m+++ b/package-lock.json[m
+[36m@@ -10,7 +10,7 @@[m
+       "dependencies": {[m
+         "@ant-design/charts": "^1.4.2",[m
+         "@ant-design/plots": "^1.2.5",[m
+[31m-        "@antv/g2plot": "^2.3.32",[m
+[32m+[m[32m        "@antv/g2plot": "^2.4.31",[m
+         "@chakra-ui/icons": "^2.0.19",[m
+         "@chakra-ui/next-js": "^2.1.4",[m
+         "@chakra-ui/react": "^2.10.7",[m
+[36m@@ -27,14 +27,10 @@[m
+         "@mui/x-data-grid": "^6.10.1",[m
+         "@next-auth/mongodb-adapter": "^1.1.3",[m
+         "@next/mdx": "^14.2.5",[m
+[31m-<<<<<<< HEAD[m
+[31m-        "@octokit/rest": "^21.1.1",[m
+[31m-=======[m
+         "@nteract/markdown": "^4.6.2",[m
+         "@octokit/rest": "^19.0.13",[m
+         "@tanstack/query-core": "^5.69.0",[m
+         "@tanstack/react-query": "^5.69.0",[m
+[31m->>>>>>> a9cfbf8cb843690d71a1b0c7b73e235fa8cfe47b[m
+         "@tanstack/react-table": "^8.10.7",[m
+         "@types/mdx": "^2.0.10",[m
+         "@types/node": "20.3.1",[m
+[36m@@ -43,12 +39,8 @@[m
+         "@visx/visx": "^3.12.0",[m
+         "apexcharts": "^4.5.0",[m
+         "autoprefixer": "^10.4.20",[m
+[31m-<<<<<<< HEAD[m
+[31m-        "axios": "^1.9.0",[m
+[31m-=======[m
+         "axios": "^1.4.0",[m
+         "bcryptjs": "^3.0.2",[m
+[31m->>>>>>> a9cfbf8cb843690d71a1b0c7b73e235fa8cfe47b[m
+         "chart.js": "^4.3.0",[m
+         "cheerio": "^1.0.0-rc.12",[m
+         "class-variance-authority": "^0.7.0",[m
+[36m@@ -69,29 +61,21 @@[m
+         "github-markdown-render": "^2.1.0",[m
+         "lucide-react": "^0.294.0",[m
+         "mongoose": "^7.3.1",[m
+[31m-<<<<<<< HEAD[m
+[31m-        "next": "^15.3.1",[m
+[31m-=======[m
+         "next": "13.4.6",[m
+         "next-auth": "^4.24.11",[m
+         "next-auth-siwe": "^4.16.4",[m
+[31m->>>>>>> a9cfbf8cb843690d71a1b0c7b73e235fa8cfe47b[m
+         "next-mdx-remote": "^4.4.1",[m
+         "next-redux-wrapper": "^8.1.0",[m
+         "next-themes": "^0.4.6",[m
+         "next-transpile-modules": "^10.0.1",[m
+         "nodemailer": "^6.10.0",[m
+         "null-loader": "^4.0.1",[m
+[31m-        "octokit": "^4.1.3",[m
+[32m+[m[32m        "octokit": "^2.1.0",[m
+         "postcss": "^8.4.24",[m
+         "postcss-loader": "^8.1.1",[m
+[31m-<<<<<<< HEAD[m
+[31m-        "react": "^18.2.0",[m
+[31m-=======[m
+         "radix-ui": "^1.1.3",[m
+         "react": "18.2.0",[m
+         "react-apexcharts": "^1.7.0",[m
+[31m->>>>>>> a9cfbf8cb843690d71a1b0c7b73e235fa8cfe47b[m
+         "react-awesome-slider": "^4.1.0",[m
+         "react-awesome-slider-fc": "^1.0.0",[m
+         "react-calendar-heatmap": "^1.10.0",[m
+[36m@@ -100,7 +84,7 @@[m
+         "react-copy-to-clipboard": "^5.1.0",[m
+         "react-csv": "^2.2.2",[m
+         "react-date-range": "^2.0.1",[m
+[31m-        "react-dom": "^18.2.0",[m
+[32m+[m[32m        "react-dom": "18.2.0",[m
+         "react-feather": "^2.0.10",[m
+         "react-force-graph-2d": "^1.27.1",[m
+         "react-force-graph-3d": "^1.26.1",[m
+[36m@@ -111,17 +95,11 @@[m
+         "react-paginate": "^8.2.0",[m
+         "react-redux": "^8.1.0",[m
+         "react-responsive-carousel": "^3.2.23",[m
+[31m-<<<<<<< HEAD[m
+[31m-        "react-search-box": "^2.3.0",[m
+[31m-        "react-slick": "^0.29.0",[m
+[31m-        "react-syntax-highlighter": "^5.8.0",[m
+[31m-=======[m
+         "react-router-dom": "^7.1.0",[m
+         "react-search-box": "^3.0.0",[m
+         "react-slick": "^0.29.0",[m
+         "react-spinners": "^0.15.0",[m
+         "react-syntax-highlighter": "^15.5.0",[m
+[31m->>>>>>> a9cfbf8cb843690d71a1b0c7b73e235fa8cfe47b[m
+         "react-use": "^17.4.0",[m
+         "recharts": "^2.15.3",[m
+         "redux": "^4.2.1",[m
+[36m@@ -132,12 +110,8 @@[m
+         "remark-highlight.js": "^7.0.1",[m
+         "sharp": "^0.33.5",[m
+         "simple-git": "^3.19.1",[m
+[31m-<<<<<<< HEAD[m
+[31m-        "some-module": "^0.0.3",[m
+[31m-=======[m
+         "sonner": "^2.0.1",[m
+         "stripe": "^17.7.0",[m
+[31m->>>>>>> a9cfbf8cb843690d71a1b0c7b73e235fa8cfe47b[m
+         "styled-components": "^6.0.2",[m
+         "swiper": "^10.0.3",[m
+         "tailwind-merge": "^2.0.0",[m
+[36m@@ -170,12 +144,14 @@[m
+     "node_modules/@adraffy/ens-normalize": {[m
+       "version": "1.10.1",[m
+       "resolved": "https://registry.npmjs.org/@adraffy/ens-normalize/-/ens-normalize-1.10.1.tgz",[m
+[31m-      "integrity": "sha512-96Z2IP3mYmF1Xg2cDm8f1gWGf/HUVedQ3FMifV4kG/PQ4yEP51xDtRAEfhVNt5f/uzpNkZHwWQuUcu6D6K+Ekw=="[m
+[32m+[m[32m      "integrity": "sha512-96Z2IP3mYmF1Xg2cDm8f1gWGf/HUVedQ3FMifV4kG/PQ4yEP51xDtRAEfhVNt5f/uzpNkZHwWQuUcu6D6K+Ekw==",[m
+[32m+[m[32m      "license": "MIT"[m
+     },[m
+     "node_modules/@alloc/quick-lru": {[m
+       "version": "5.2.0",[m
+       "resolved": "https://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.2.0.tgz",[m
+       "integrity": "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==",[m
+[32m+[m[32m      "license": "MIT",[m
+       "engines": {[m
+         "node": ">=10"[m
+       },[m
+[36m@@ -193,6 +169,7 @@[m
+       "version": "1.4.3",[m
+       "resolved": "https://registry.npmjs.org/@ant-design/charts/-/charts-1.4.3.tgz",[m
+       "integrity": "sha512-Y0CJYtug+2Bjl2zvuehE39sxBITxWI49VnLl/O7olD+bwkXeY2QEDjB457dBIn+XIHizCWyWBW+wDIECvfFahw==",[m
+[32m+[m[32m      "license": "MIT",[m
+       "dependencies": {[m
+         "@ant-design/flowchart": "1.2.2",[m
+         "@ant-design/graphs": "1.4.1",[m
+[36m@@ -207,10 +184,20 @@[m
+         "react-dom": ">=16.8.4"[m
+       }[m
+     },[m
+[32m+[m[32m    "node_modules/@ant-design/colors": {[m
+[32m+[m[32m      "version": "4.0.5",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@ant-design/colors/-/colors-4.0.5.tgz",[m
+[32m+[m[32m      "integrity": "sha512-3mnuX2prnWOWvpFTS2WH2LoouWlOgtnIpc6IarWN6GOzzLF8dW/U8UctuvIPhoboETehZfJ61XP+CGakBEPJ3Q==",[m
+[32m+[m[32m      "license": "MIT",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "tinycolor2": "^1.4.1"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/@ant-design/flowchart": {[m
+       "version": "1.2.2",[m
+       "resolved": "https://registry.npmjs.org/@ant-design/flowchart/-/flowchart-1.2.2.tgz",[m
+       "integrity": "sha512-bzHZ81qqHjWIrXcCMInDB6eMTzbswaVCOAdUTCQJ+B45aybkVsU9LMCKquyOwRM7U7PWNfPC9S/lAlx2i2BvBQ==",[m
+[32m+[m[32m      "license": "MIT",[m
+       "dependencies": {[m
+         "@antv/layout": "^0.1.17",[m
+         "@antv/x6": "^1.25.0",[m
+[36m@@ -228,109 +215,11 @@[m
+         "react-dom": ">=16.8.4"[m
+       }[m
+     },[m
+[31m-    "node_modules/@ant-design/flowchart/node_modules/@antv/xflow": {[m
+[31m-      "version": "1.1.52",[m
+[31m-      "resolved": "https://registry.npmjs.org/@antv/xflow/-/xflow-1.1.52.tgz",[m
+[31m-      "integrity": "sha512-B2IApV4vG2DmMubbfXGjE+oKi2eXvPuijdHhbxwQheIWcm+VtVQscaFvwUexb4CHH5tBSnjtUeKrhRIkXop70w==",[m
+[31m-      "dependencies": {[m
+[31m-        "@antv/layout": "^0.1.22",[m
+[31m-        "@antv/x6": "^1.30.1",[m
+[31m-        "@antv/x6-react-components": "^1.1.15",[m
+[31m-        "@antv/x6-react-shape": "^1.5.2",[m
+[31m-        "@antv/xflow-core": "1.1.52",[m
+[31m-        "@antv/xflow-extension": "1.1.52",[m
+[31m-        "@antv/xflow-hook": "1.1.52"[m
+[31m-      },[m
+[31m-      "peerDependencies": {[m
+[31m-        "@ant-design/icons": "^4.6.0",[m
+[31m-        "antd": "^4.6.3",[m
+[31m-        "lodash": "^4.17.20",[m
+[31m-        "react": "^16.8.0  || ^17.0.0",[m
+[31m-        "react-dom": "^16.8.0  || ^17.0.0"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "node_modules/@ant-design/flowchart/node_modules/@antv/xflow/node_modules/@antv/xflow-core": {[m
+[31m-      "version": "1.1.52",[m
+[31m-      "resolved": "https://registry.npmjs.org/@antv/xflow-core/-/xflow-core-1.1.52.tgz",[m
+[31m-      "integrity": "sha512-62CZeOLMXvDpKOqbq/8zoDt7MUjOkGh9dKBDbxL744UgZCN5Fx4SE+qRhK5purGixTq35XzZ+b9G5wdAX4rLjw==",[m
+[31m-      "dependencies": {[m
+[31m-        "@antv/xflow-hook": "1.0.52",[m
+[31m-        "classnames": "^2.3.1",[m
+[31m-        "immer": "^9.0.7",[m
+[31m-        "mana-common": "^0.3.1",[m
+[31m-        "mana-syringe": "^0.2.2",[m
+[31m-        "reflect-metadata": "^0.1.13",[m
+[31m-        "rxjs": "^6.6.7"[m
+[31m-      },[m
+[31m-      "peerDependencies": {[m
+[31m-        "@ant-design/icons": "^4.6.0",[m
+[31m-        "@antv/x6": "^1.30.1",[m
+[31m-        "@antv/x6-react-components": "^1.1.15",[m
+[31m-        "@antv/x6-react-shape": "^1.2.5",[m
+[31m-        "antd": "^4.6.3",[m
+[31m-        "lodash": "^4.17.20",[m
+[31m-        "react": "^16.8.0  || ^17.0.0",[m
+[31m-        "react-dom": "^16.8.0  || ^17.0.0"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "node_modules/@ant-design/flowchart/node_modules/@antv/xflow/node_modules/@antv/xflow-core/node_modules/@antv/xflow-hook": {[m
+[31m-      "version": "1.0.52",[m
+[31m-      "resolved": "https://registry.npmjs.org/@antv/xflow-hook/-/xflow-hook-1.0.52.tgz",[m
+[31m-      "integrity": "sha512-qyheVO5bwhDjKGSldf3pkneowf8ZCydIIrX4n8LRTFpvVhVF9cPoXG9e6+1LhIFvSEaLAJcYBH4gNqAjRrbUYw==",[m
+[31m-      "dependencies": {[m
+[31m-        "toposort": "^2.0.2"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "node_modules/@ant-design/flowchart/node_modules/@antv/xflow/node_modules/@antv/xflow-extension": {[m
+[31m-      "version": "1.1.52",[m
+[31m-      "resolved": "https://registry.npmjs.org/@antv/xflow-extension/-/xflow-extension-1.1.52.tgz",[m
+[31m-      "integrity": "sha512-pPpx00xwucAkl5+QyxxWiOaRpKGnu0Z1+IDUEYuDvEKxms7+Ml0nDc4+CnDi1e1wr4hB3QgxgLOb0JpUTgBCfg==",[m
+[31m-      "dependencies": {[m
+[31m-        "@antv/xflow-core": "1.1.52",[m
+[31m-        "@antv/xflow-hook": "1.0.52",[m
+[31m-        "mana-syringe": "^0.2.2",[m
+[31m-        "moment": "^2.29.1",[m
+[31m-        "rc-field-form": "^1.22.0",[m
+[31m-        "react-color": "2.17.1",[m
+[31m-        "reflect-metadata": "^0.1.13"[m
+[31m-      },[m
+[31m-      "peerDependencies": {[m
+[31m-        "@ant-design/icons": "^4.6.0",[m
+[31m-        "@antv/x6": "^1.30.1",[m
+[31m-        "@antv/x6-react-components": "^1.1.15",[m
+[31m-        "@antv/x6-react-shape": "^1.2.5",[m
+[31m-        "antd": "^4.6.3",[m
+[31m-        "classnames": "^2.2.6",[m
+[31m-        "react": "^16.8.0  || ^17.0.0",[m
+[31m-        "react-dom": "^16.8.0  || ^17.0.0",[m
+[31m-        "reflect-metadata": "^0.1.13"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "node_modules/@ant-design/flowchart/node_modules/@antv/xflow/node_modules/@antv/xflow-extension/node_modules/@antv/xflow-hook": {[m
+[31m-      "version": "1.0.52",[m
+[31m-      "resolved": "https://registry.npmjs.org/@antv/xflow-hook/-/xflow-hook-1.0.52.tgz",[m
+[31m-      "integrity": "sha512-qyheVO5bwhDjKGSldf3pkneowf8ZCydIIrX4n8LRTFpvVhVF9cPoXG9e6+1LhIFvSEaLAJcYBH4gNqAjRrbUYw==",[m
+[31m-      "dependencies": {[m
+[31m-        "toposort": "^2.0.2"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "node_modules/@ant-design/flowchart/node_modules/@antv/xflow/node_modules/react-color": {[m
+[31m-      "version": "2.17.1",[m
+[31m-      "resolved": "https://registry.npmjs.org/react-color/-/react-color-2.17.1.tgz",[m
+[31m-      "integrity": "sha512-S+I6TkUKJaqfALLkAIfiCZ/MANQyy7dKkf7g9ZU5GTUy2rf8c2Rx62otyvADAviWR+6HRkzdf2vL1Qvz9goCLQ==",[m
+[31m-      "dependencies": {[m
+[31m-        "@icons/material": "^0.2.4",[m
+[31m-        "lodash": "^4.17.11",[m
+[31m-        "material-colors": "^1.2.1",[m
+[31m-        "prop-types": "^15.5.10",[m
+[31m-        "reactcss": "^1.2.0",[m
+[31m-        "tinycolor2": "^1.4.1"[m
+[31m-      }[m
+[31m-    },[m
+     "node_modules/@ant-design/flowchart/node_modules/react-use": {[m
+       "version": "17.3.1",[m
+       "resolved": "https://registry.npmjs.org/react-use/-/react-use-17.3.1.tgz",[m
+       "integrity": "sha512-hs7+tS4rRm1QLHPfanLCqXIi632tP4V7Sai1ENUP2WTufU6am++tU9uSw9YrNCFqbABiEv0ndKU1XCUcfu2tXA==",[m
+[32m+[m[32m      "license": "Unlicense",[m
+       "dependencies": {[m
+         "@types/js-cookie": "^2.2.6",[m
+         "@xobotyi/scrollbar-width": "^1.9.5",[m
+[36m@@ -352,34 +241,11 @@[m
+         "react-dom": "^16.8.0  || ^17.0.0"[m
+       }[m
+     },[m
+[31m-    "node_modules/@ant-design/flowchart/node_modules/rxjs": {[m
+[31m-      "version": "6.6.7",[m
+[31m-      "resolved": "https://registry.npmjs.org/rxjs/-/rxjs-6.6.7.tgz",[m
+[31m-      "integrity": "sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ==",[m
+[31m-      "dependencies": {[m
+[31m-        "tslib": "^1.9.0"[m
+[31m-      },[m
+[31m-      "engines": {[m
+[31m-        "npm": ">=2.0.0"[m
+[31m-      }[m
+[31m-    },[m
+[31m-    "node_modules/@ant-design/flowchart/node_modules/rxjs/node_modules/tslib": {[m
+[31m-      "version": "1.14.1",[m
+[31m-      "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",[m
+[31m-      "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="[m
+[31m-    },[m
+[31m-    "node_modules/@ant-design/flowchart/node_modules/throttle-debounce": {[m
+[31m-      "version": "3.0.1",[m
+[31m-      "resolved": "https://registry.npmjs.org/throttle-debounce/-/throttle-debounce-3.0.1.tgz",[m
+[31m-      "integrity": "sha512-dTEWWNu6JmeVXY0ZYoPuH5cRIwc0MeGbJwah9KUNYSJwommQpCzTySTpEe8Gs1J23aeWEuAobe4Ag7EHVt/LOg==",[m
+[31m-      "engines": {[m
+[31m-        "node": ">=10"[m
+[31m-      }[m
+[31m-    },[m
+     "node_modules/@ant-design/graphs": {[m
+       "version": "1.4.1",[m
+       "resolved": "https://registry.npmjs.org/@ant-design/graphs/-/graphs-1.4.1.tgz",[m
+       "integrity": "sha512-Qyj7Lnfo0gmbaMzm+9AdrS3fjkg2sFU/ZKaFl7xhgEf5LnX+N/KffIvoT8FsBmrZ9ni3onwlHs1dtYa5QdVhtQ==",[m
+[32m+[m[32m      "license": "MIT",[m
+       "dependencies": {[m
+         "@antv/dom-util": "^2.0.4",[m
+         "@antv/g6": "^4.2.4",[m
+[36m@@ -397,6 +263,7 @@[m
+       "version": "1.0.8",[m
+       "resolved": "https://registry.npmjs.org/@ant-design/maps/-/maps-1.0.8.tgz",[m
+       "integrity": "sha512-q9Lv14Ekp7j24R9agrTXIINKc1/zslLXfTIWNuoZ0hUq7w1doyEhtLTsuF0n1wcgdKGjAX3wBKQRaVlgz+u8lw==",[m
+[32m+[m[32m      "license": "MIT",[m
+       "dependencies": {[m
+         "@antv/l7": "^2.9.37",[m
+         "@antv/l7plot": "0.x",[m
+[36m@@ -412,6 +279,7 @@[m
+       "version": "1.2.6",[m
+       "resolved": "https://registry.npmjs.org/@ant-design/plots/-/plots-1.2.6.tgz",[m
+       "integrity": "sha512-fFzB9DxRSPQa47S3WypRk4Rh+P8vBUuY/DT+IXgUrlKJtvVZUFnuYfjypX3Q/Pie2PEbI6gmskzXLxVF+3Ztvw==",[m
+[32m+[m[32m      "license": "MIT",[m
+       "dependencies": {[m
+         "@antv/g2plot": "^2.2.11",[m
+         "@antv/util": "^2.0.9",[m
+[36m@@ -426,6 +294,7 @@[m
+       "version": "0.2.5",[m
+       "resolved": "https://registry.npmjs.org/@antv/adjust/-/adjust-0.2.5.tgz",[m
+       "integrity": "sha512-MfWZOkD9CqXRES6MBGRNe27Q577a72EIwyMnE29wIlPliFvJfWwsrONddpGU7lilMpVKecS3WAzOoip3RfPTRQ==",[m
+[32m+[m[32m      "license": "MIT",[m
+       "dependencies": {[m
+         "@antv/util": "~2.0.0",[m
+         "tslib": "^1.10.0"[m
+[36m@@ -434,12 +303,14 @@[m
+     "node_modules/@antv/adjust/node_modules/tslib": {[m
+       "version": "1.14.1",[m
+       "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",[m
+[31m-      "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg
