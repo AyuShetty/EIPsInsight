@@ -19,6 +19,8 @@ import { useRouter } from "next/router";
 import { DownloadIcon } from "@chakra-ui/icons";
 import TableOfContents from '@/components/TableOfContents';
 import LastUpdatedDateTime from "@/components/LastUpdatedDateTime";
+import FeedbackButton from "@/components/FeedbackButton";
+import { Tooltip } from "@chakra-ui/react";
 // import { Bar } from "@ant-design/charts";
 // import { Line } from '@ant-design/charts';  // Import the Line chart component
 
@@ -125,6 +127,8 @@ const ReviewTracker = () => {
 
 
   const toggleCollapse = () => setShow(!show);
+
+  const [showThumbs, setShowThumbs] = useState(false);
 
   const fetchReviewers = async (): Promise<string[]> => {
     try {
@@ -1920,12 +1924,158 @@ const router = useRouter();
     };
   }, [router]);
 
+  // Scroll to the feedback section at the bottom of the page
+  const scrollToFeedbackSection = () => {
+    const feedbackSection = document.getElementById("comments"); // Ensure the case matches the HTML
+    if (feedbackSection) {
+      feedbackSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+// Handle thumbs up/down feedback
+const handleFeedbackClick = (type: 'positive' | 'negative') => {
+  const message =
+    type === 'positive'
+      ? 'Thank you for your positive feedback!'
+      : 'Thank you for your feedback!';
+  alert(message);
+};
+
 
   return (
+   
     loading ? (
       <LoaderComponent />
     ) : (
+      
       <AllLayout>
+   <Box
+  position="fixed"
+  right="0"
+  top="50%"
+  transform="translateY(-50%)"
+  zIndex="1000"
+  display="flex"
+  flexDirection="column" // Stack items vertically
+  alignItems="center" // Center-align items
+  gap="10px" // Space between elements
+  onMouseEnter={() => setShowThumbs(true)} // Show thumbs on hover
+  onMouseLeave={() => setShowThumbs(false)} // Hide thumbs when not hovering
+>
+  {/* Feedback Button */}
+  <Tooltip label="Give Feedback" aria-label="Feedback Tooltip">
+    <Box
+      bg="#48BB78" // Replace with your floating icons' color
+      color="white"
+      p="9px"
+      position="fixed" // Make the button fixed on the screen
+      right="-60px"
+      borderRadius="8px 8px 0px 0px"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      fontSize="12px"
+      cursor="pointer"
+      lineHeight="0.5"
+      minWidth="140px" 
+      transition="translateY(-55%), transform 0.3s ease, box-shadow 0.3s ease"
+      boxShadow="lg"
+      style={{
+        transform: "rotate(-90deg)", // Rotate text vertically
+        transformOrigin: "center center", // Rotate around the center
+      }}
+      _hover={{
+        transform: "scale(1.05) rotate(-90deg)", // Keep rotation on hover with scaling
+        bg: "#2B6CB0", // Slightly darker on hover
+        boxShadow: "xl",
+      }}
+      onClick={scrollToFeedbackSection} // Scroll to comments when the feedback button is clicked
+    >
+      Is this page helpful?
+    </Box>
+  </Tooltip>
+
+  {/* Thumbs-up and Thumbs-down Buttons */}
+  {showThumbs && (
+    <Box
+      bg="white"
+      color="#3182CE"
+      p="10px"
+      borderRadius="15px"
+      position= "fixed"
+      right = "25px"
+      top = "-70px"
+      display="flex"
+      flexDirection="column" // Stack thumbs vertically
+      alignItems="center"
+      justifyContent="center"
+      gap="12px" // Space between thumbs-up and thumbs-down
+      mt="10px"
+      boxShadow="lg"
+      border="1px solid #E2E8F0"
+      transition="transform 0.3s ease, box-shadow 0.3s ease"
+      _hover={{
+        transform: "scale(1.05)",
+      }}
+    >
+      {/* Thumbs-Up Button */}
+      <Tooltip label="I like this!" aria-label="Thumbs-Up Tooltip">
+        <Box
+          as="button"
+          bg="#E6FFFA" // Light green background
+          color="#2C7A7B"
+          borderRadius="50%" // Circular button
+          p="12px"
+          fontSize="20px"
+          boxShadow="md"
+          transition="background 0.3s ease, transform 0.3s ease"
+          _hover={{
+            bg: "#B2F5EA", // Slightly darker green on hover
+            transform: "scale(1.1)",
+          }}
+          onClick={scrollToFeedbackSection} // Scroll to comments when Thumbs-Up is clicked
+          aria-label="Thumbs up"
+        >
+          👍
+        </Box>
+      </Tooltip>
+
+      {/* Thumbs-Down Button */}
+      <Tooltip label="Needs Improvement" aria-label="Thumbs-Down Tooltip">
+        <Box
+          as="button"
+          bg="#FED7D7" // Light red background
+          color="#C53030"
+          borderRadius="50%" // Circular button
+          p="12px"
+          fontSize="20px"
+          boxShadow="md"
+          transition="background 0.3s ease, transform 0.3s ease"
+          _hover={{
+            bg: "#FEB2B2", // Slightly darker red on hover
+            transform: "scale(1.1)",
+          }}
+          onClick={scrollToFeedbackSection} // Scroll to comments when Thumbs-Down is clicked
+          aria-label="Thumbs down"
+        >
+          👎
+        </Box>
+      </Tooltip>
+    </Box>
+  )}
+</Box>
+
+
+
+      {/* Rest of the component */}
+      <Flex
+        direction={{ base: "column", md: "row" }}
+        gap={{ base: 4, md: 8 }}
+        p={{ base: 4, md: 8 }}
+      >
+        {/* Sidebar and other content */}
+        {/* ... */}
+      </Flex>
          <Flex
     direction={{ base: 'column', md: 'row' }}
     gap={{ base: 4, md: 8 }}
@@ -1938,6 +2088,7 @@ const router = useRouter();
       
       <Box flex="1" p={4}>
         <section id = "LeaderBoard">
+          
       <Heading
         size="xl"
         marginBottom={10}
@@ -2891,8 +3042,10 @@ const router = useRouter();
           <br/>
         <hr></hr>
         <br/>
-        <Text fontSize="3xl" fontWeight="bold">Comments</Text>
+        <section id="comments">
+        <Text fontSize="3xl" fontWeight="bold">Comments</Text></section>
           <Comments page={"Reviewers"}/>
+          
         </Box>
 
 
