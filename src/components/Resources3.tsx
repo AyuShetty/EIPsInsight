@@ -341,6 +341,13 @@ const ResourcesPage: React.FC = () => {
 
   const BLOGS = [
     {
+      image: "/nody.png",
+      title: "10 years of EIPs",
+      content: "A decade-long review of Ethereum Improvement Proposals (EIPs), detailing their impact on protocol upgrades, token standards, consensus changes, and the evolution of Ethereum into a $400+ billion ecosystem. Covers major eras, landmark EIPs, and the pivotal role of open governance in Ethereum's growth.",
+      link: "/EIPsAt10",
+      tag: "10 years overview"
+    },
+    {
       image: "/EipsInsightRecap.jpg",
       title: "Eipsinsight milestones 2024",
       content: "This review highlights the pivotal role played by the Analytics Scheduler, Reviewers Tracker, EIP Board, and other utilities.",
