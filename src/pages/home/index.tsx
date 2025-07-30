@@ -4,6 +4,7 @@ import AllLayout from "@/components/Layout";
 import Dashboard from "@/components/Dashboard"
 import Head from "next/head"
 import ViewsShare from "@/components/ViewsNShare";
+import { Box } from "@chakra-ui/react";
 
 
 const Dasboard = () => {
@@ -26,8 +27,10 @@ const Dasboard = () => {
           Home
         </title>
       </Head>
-      <Dashboard />
-      <ViewsShare path={'/home'} />
+      <Box px={{ base: "1rem", md: "4rem" }} py="2rem">
+        <Dashboard />
+        <ViewsShare path={'/home'} />
+      </Box>
     </AllLayout>
   );
 };

@@ -254,7 +254,7 @@ const linkColor = useColorModeValue("blue.600", "blue.300");
   return (
     <>
       <FeedbackWidget />
-  <Box px={{ base: 4, md: 8, lg: 10 }} py={{ base: 6, md: 8, lg: 10 }}>
+  <Box>
     {isLoading ? (
       <Flex justify="center" align="center" minH="70vh">
         <motion.div
@@ -279,7 +279,7 @@ const linkColor = useColorModeValue("blue.600", "blue.300");
             >
               <Box
                 id={"hero"}
-pt={{ base: 6, lg: 12 }} pb={{ base: 6, lg: 10 }}
+                my={4}
               >
                 <div className="lg:block hidden">
                   <Box
@@ -307,11 +307,11 @@ pt={{ base: 6, lg: 12 }} pb={{ base: 6, lg: 10 }}
                           )} // Optional: add a gradient background
                           bgClip="text" // Optional: clip background to the text
                           fontSize={{
-                            lg: "6xl",
-                            md: "5xl",
-                            sm: "3xl",
-                            base: "xl",
+                            base: "md",
+                            md: "lg",
+                            lg: "xl",
                           }}
+                          lineHeight="1.75"
                         >
                           Ethereum <br /> Improvement <br /> Proposal <br />{" "}
                           Insight
@@ -539,6 +539,7 @@ pt={{ base: 6, lg: 12 }} pb={{ base: 6, lg: 10 }}
               <Box
                 className="py-8"
                 display={{ base: "block", md: "block", lg: "none" }}
+                my={4}
               >
                 <Box
                   className="w-full lg:px-48 md:px-32 sm:px-24 px-20 py-5 rounded-[0.55rem] hover:border border-blue-500"
@@ -547,12 +548,12 @@ pt={{ base: 6, lg: 12 }} pb={{ base: 6, lg: 10 }}
                   <SearchBox />
                 </Box>
               </Box>
-              <div>
+              <Box my={4}>
                 <ToolsSection />
-              </div>
-              <div>
+              </Box>
+              <Box my={4}>
                 <Clients />
-              </div>
+              </Box>
 
               {/* <div className="py-8"> */}
               {/* <Box
@@ -565,6 +566,7 @@ pt={{ base: 6, lg: 12 }} pb={{ base: 6, lg: 10 }}
               {/* </Box> */}
               {/* </div> */}
 <div className="py-10 lg:py-16" id="what">
+  <Box my={4}>
   <Header
     title="What is EIPsInsight?"
     subtitle="Overview"
@@ -593,7 +595,11 @@ pt={{ base: 6, lg: 12 }} pb={{ base: 6, lg: 10 }}
     {/* Right Side - Text Content */}
     <div className="flex justify-center items-start">
       <div className="text-left max-w-xl space-y-6">
-<p className="text-xl leading-relaxed" style={{ color: textColor }}>
+<Text 
+  fontSize={{ base: "md", md: "lg", lg: "xl" }}
+  lineHeight="1.75"
+  style={{ color: textColor }}
+>
   <span style={{ color: linkColor, fontWeight: "600" }}>EIPsInsight</span> is a
   tooling platform designed to provide visual insights into the activity of
   Ethereum Improvement Proposals (
@@ -613,18 +619,21 @@ pt={{ base: 6, lg: 12 }} pb={{ base: 6, lg: 10 }}
     <span className="text-blue-400"> EIP Editors</span>
   </NextLink>
   , enhancing transparency and efficiency in the review process.
-</p>
+</Text>
 
 <NextLink href="/resources">
-  <span
-    className="text-xl flex items-center space-x-2 hover:underline"
+  <Text
+    fontSize={{ base: "md", md: "lg", lg: "xl" }}
+    lineHeight="1.75" 
+    className="flex items-center space-x-2 hover:underline"
   >
     Learn More <BsArrowUpRight className="pt-1" size={22} />
-  </span>
+  </Text>
 </NextLink>
 
       </div>
     </div>
+  </Box>
   </Box>
 </div>
 
@@ -633,7 +642,7 @@ pt={{ base: 6, lg: 12 }} pb={{ base: 6, lg: 10 }}
             </motion.div>
             <br />
             <div className="py-16" id="statuschanges">
-              <Box>
+              <Box my={4}>
                 <Header
                   title="EIP Status Changes by Year"
                   subtitle="Overview"
@@ -645,7 +654,7 @@ pt={{ base: 6, lg: 12 }} pb={{ base: 6, lg: 10 }}
                 <TypeGraphs />
               </Box>
             </div>
-            <Box id="dashboard" sx={{ scrollMarginTop: "100px" }}>
+            <Box id="dashboard" sx={{ scrollMarginTop: "100px" }} my={4}>
               <Box
                 // bg="rgba(0, 0, 0, 0.5)"
                 borderRadius="md" // Rounded corners
