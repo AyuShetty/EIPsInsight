@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import LargeWithAppLinksAndSocial from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import SubscriptionFloater from "@/components/SubscriptionFloater";
+import AppSidebar from './AppSidebar';
 import {
   Box,
   ColorModeScript,
