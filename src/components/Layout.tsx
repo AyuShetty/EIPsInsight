@@ -24,7 +24,6 @@ import { BookmarkProvider } from "./BookmarkContext";
 import SidebarConfigLoader from "./Sidebar/SideBarConfigLoader";
 import { sidebarConfig } from "./Sidebar/slidebarConfig";
 import { useSidebarStore } from "@/stores/useSidebarStore";
-import AppSidebar from "./Sidebar/AppSidebar";
 
 const mont = Rajdhani({
   subsets: ["latin"],
@@ -36,133 +35,81 @@ const AllLayout = ({ children }: { children: React.ReactNode }) => {
   const topLevelRoute =
     pathname === "/" ? "/" : `/${pathname?.split("/")?.[1]}`;
   const shouldShowSidebar = !!sidebarConfig[topLevelRoute];
-  const router = usePathname();
   const { isCollapsed } = useSidebarStore();
 
-  const [isMobile, setIsMobile] = useState(false);
-  const [isHydrated, setIsHydrated] = useState(false);
-
-  useEffect(() => {
-    if (window.location.hash) {
-      const id = window.location.hash.replace("#", "");
-      setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 300); // delay ensures DOM is ready
-    }
-  }, []);
-
-  useEffect(() => {
-    // This ensures hydration is complete before rendering
-    setIsHydrated(true);
-    const mobile = window.matchMedia("(max-width: 768px)");
-    setIsMobile(mobile.matches);
-
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mobile.addEventListener("change", handler);
-    return () => mobile.removeEventListener("change", handler);
-  }, []);
-
-  if (!isHydrated) return null;
-
-  const sidebarVisible = !isMobile;
-  const sidebarWidth = sidebarVisible ? (isCollapsed ? "3rem" : "16rem") : "0";
+  // Responsive sidebar width
+  const sidebarWidth = useBreakpointValue({ base: "0px", md: isCollapsed ? "60px" : "240px" });
+  const sidebarVisible = shouldShowSidebar;
 
   return (
+    <SessionWrapper>
       <motion.div
-        key={router}
+        key={pathname}
         initial="initialState"
         animate="animateState"
         exit="exitState"
         transition={{ duration: 0.75 }}
         variants={{
-          initialState: {
-            opacity: 0,
-            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-          },
-          animateState: {
-            opacity: 1,
-            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-          },
-          exitState: {
-            clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)",
-          },
+          initialState: { opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" },
+          animateState: { opacity: 1, clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" },
+          exitState: { clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)" },
         }}
-        className={`${mont.className} base-page-size`}
+        className={mont.className + " base-page-size"}
+        style={{ minHeight: "100vh", padding: 0, margin: 0 }}
       >
         <Head>
           <title>EIPs Insights</title>
           <link rel="icon" href="/eipFavicon.png" />
         </Head>
-
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-R36R5NJFTW"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-R36R5NJFTW');
-          `}
-        </Script>
-
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-R36R5NJFTW" />
+        <Script id="google-analytics" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-R36R5NJFTW');
+        `}</Script>
         <ColorModeScript initialColorMode="dark" />
 
         <Providers>
           <BookmarkProvider>
             <SidebarConfigLoader />
-
-            {/* SIDEBAR */}
             {sidebarVisible && (
               <Portal>
-                <Box
-                  position="fixed"
-                  top="0"
-                  left="0"
-                  zIndex={100000}
-                  transition="width 0.2s ease"
-                >
+                <Box position="fixed" top="0" left="0" zIndex={100000}>
                   <AppSidebar />
                 </Box>
               </Portal>
             )}
-
-            {/* NAVBAR + CONTENT */}
             <Box
               ml={sidebarWidth}
               transition="margin 0.3s ease"
-              // className="border border-red-800"
-              w={{ base: "100%", md: "auto" }} // 👈 100% only on mobile
-              maxW={{ base: "100vw", md: "none" }} // 👈 prevent overflow only on mobile
-              overflowX={{ base: "hidden", md: "visible" }} // 👈 only restrict horizontal scroll on mobile
+              w="100%"
+              maxW="100vw"
+              overflowX="hidden"
+              p={0}
+              m={0}
             >
               <Navbar />
               <AuthLocalStorageInitializer />
-              {children}
-              <Box
-                position="fixed"
-                bottom={{ base: 4, md: 4 }}
-                right={{ base: 4, md: 4 }}
-                display="flex"
-                flexDirection="row"
-                gap={3}
-                zIndex={2000}
-              >
+              {/* Main Content */}
+              <Box as="main" p={0} m={0}>
+                {children}
+              </Box>
+              {/* Floater icons - minimal spacing */}
+              <Box position="fixed" bottom={8} right={8} display="flex" flexDirection="row" gap={2} zIndex={2000}>
                 <FloatingContributionIcon />
                 <BookmarkFloater />
                 <SubscriptionFloater />
               </Box>
-
-
-              <LargeWithAppLinksAndSocial />
+              {/* Footer - minimal top margin */}
+              <Box mt={2}>
+                <LargeWithAppLinksAndSocial />
+              </Box>
             </Box>
           </BookmarkProvider>
         </Providers>
       </motion.div>
+    </SessionWrapper>
   );
 };
 
