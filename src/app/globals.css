@@ -4,15 +4,13 @@
 
 .chakra-ui-dark body {
   background: #000 !important;
-  /* Black background */
 }
 
 .chakra-ui-light body {
   background: #fff !important;
-  /* White background */
 }
 
-/* Force table styling to respect theme */
+/* Table theme overrides */
 .table {
   background-color: transparent !important;
 }
@@ -22,10 +20,10 @@
   background-color: #2D3748 !important;
   color: white !important;
 }
+
 .table td a {
   color: inherit !important;
 }
-
 
 [data-theme='light'] .table th,
 [data-theme='light'] .table td {
@@ -33,23 +31,30 @@
   color: black !important;
 }
 
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-html {
+/* Smooth scroll, no extra vertical spacing globally */
+html, body {
   scroll-behavior: smooth;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
+/* Minimal vertical spacing for sections */
+section, .section, .main-section {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
 
+/* Remove excess padding from nested containers, override as needed in components */
 
-  @layer base {
+/* Animation keyframes unchanged */
+@keyframes scroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -88,20 +93,5 @@ html {
     --primary-foreground: 0 0% 9%;
     --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
   }
 }
-
