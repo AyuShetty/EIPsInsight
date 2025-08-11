@@ -277,396 +277,598 @@ const linkColor = useColorModeValue("blue.600", "blue.300");
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
+              {/* 🎯 SECTION 1: HERO - First Impression & Value Proposition */}
               <Box
                 id={"hero"}
-pt={{ base: 4, lg: 6 }} pb={{ base: 4, lg: 5 }}
+                pt={{ base: 4, md: 6, lg: 8 }} 
+                pb={{ base: 4, md: 6, lg: 8 }}
               >
                 <div className="lg:block hidden">
                   <Box
                     display={{ lg: "grid" }}
                     gridTemplateColumns={{ lg: "2fr 1fr" }}
+                    gap={12}
+                    alignItems="center"
                   >
-                    <Stack direction={"column"}>
-                      <Box
-                        borderRadius="md"
-                        padding={2}
-                        paddingLeft="4"
-                        maxWidth="500px"
-                      >
+                    <Stack direction={"column"} spacing={8}>
+                      <Box>
                         <Text
                           color={useColorModeValue(
                             textColorLight,
                             textColorDark
                           )}
-                          fontWeight={"bold"}
+                          fontWeight={"black"}
                           bgGradient={useColorModeValue(
                             bgGradientLight,
                             bgGradientDark
                           )}
                           bgClip="text"
                           fontSize={{
-                            lg: "5xl",
-                            md: "4xl",
-                            sm: "3xl",
-                            base: "xl",
+                            lg: "6xl",
+                            md: "5xl",
+                            sm: "4xl",
+                            base: "2xl",
                           }}
-                          lineHeight="1.1"
+                          lineHeight="0.95"
+                          letterSpacing="tight"
+                          mb={6}
                         >
-                          Ethereum <br /> Improvement <br /> Proposal <br />{" "}
-                          Insight
+                          Ethereum <br /> Improvement <br /> Proposal <br />
+                          <Text 
+                            as="span" 
+                            bgGradient="linear(45deg, #30A0E0, #63B3ED)"
+                            bgClip="text"
+                            fontSize="inherit"
+                            fontWeight="inherit"
+                          >
+                            Insight
+                          </Text>
+                        </Text>
+                        <Text 
+                          fontSize="xl" 
+                          color={useColorModeValue("gray.600", "gray.300")}
+                          maxW="500px"
+                          lineHeight="1.7"
+                          fontWeight="medium"
+                        >
+                          Your comprehensive platform for tracking, analyzing, and understanding 
+                          Ethereum's evolution through EIPs, ERCs, and RIPs.
                         </Text>
                       </Box>
 
-                      <Stack direction={"row"} spacing={"4"} mt={4}>
-                        <Box>
-                          <NextLink href={"/home#1"}>
-                            <Button
-                              color="#F5F5F5"
-                              variant={"outline"}
-                              fontSize={{
-                                lg: "14px",
-                                md: "12px",
-                                sm: "12px",
-                                base: "10px",
-                              }}
-                              fontWeight={"bold"}
-                              padding={{
-                                lg: "10px 20px",
-                                md: "5px 10px",
-                                sm: "5px 10px",
-                                base: "5px 10px",
-                              }}
-                              rightIcon={<BsArrowUpRight />}
-                              bgColor={"#30A0E0"}
-                              _hover={{
-                                bgColor: useColorModeValue(
-                                  "#2B6CB0",
-                                  "#4A5568"
-                                ),
-                                color: useColorModeValue("white", "#F5F5F5"),
-                              }}
-                            >
-                              Dashboard
-                            </Button>
-                          </NextLink>
-                        </Box>
-
-                        <Box>
-                          <NextLink
-                            href={`/insight/${year}/${getMonth(monthName)}`}
+                      <Stack direction={"row"} spacing={"4"} flexWrap="wrap">
+                        <NextLink href={"/home#dashboard"}>
+                          <Button
+                            size="lg"
+                            bg="linear-gradient(135deg, #30A0E0 0%, #2B8AD6 100%)"
+                            color="white"
+                            rightIcon={<BsArrowUpRight />}
+                            _hover={{
+                              bg: "linear-gradient(135deg, #2B8AD6 0%, #1A75BB 100%)",
+                              transform: "translateY(-2px)",
+                              shadow: "xl",
+                            }}
+                            transition="all 0.3s ease"
+                            fontWeight="bold"
+                            px={8}
                           >
-                            <Button
-                              color="#F5F5F5"
-                              variant={"outline"}
-                              fontSize={{
-                                lg: "14px",
-                                md: "10px",
-                                sm: "12px",
-                                base: "10px",
-                              }}
-                              fontWeight={"bold"}
-                              padding={{
-                                lg: "10px 20px",
-                                md: "5px 10px",
-                                sm: "5px 10px",
-                                base: "5px 10px",
-                              }}
-                              rightIcon={<BsGraphUp />}
-                              bgColor={"#30A0E0"}
-                              _hover={{
-                                bgColor: useColorModeValue(
-                                  "#2B6CB0",
-                                  "#4A5568"
-                                ),
-                                color: useColorModeValue("white", "#F5F5F5"),
-                              }}
-                            >
-                              {monthName} {year} Insight
-                            </Button>
-                          </NextLink>
-                        </Box>
+                            View Dashboard
+                          </Button>
+                        </NextLink>
 
-                                                <Box>
-                          <NextLink href={"/all"}>
-                            <Button
-                              color="#F5F5F5"
-                              variant={"outline"}
-                              fontSize={{
-                                lg: "14px",
-                                md: "12px",
-                                sm: "12px",
-                                base: "10px",
-                              }}
-                              fontWeight={"bold"}
-                              padding={{
-                                lg: "10px 20px",
-                                md: "5px 10px",
-                                sm: "5px 10px",
-                                base: "5px 10px",
-                              }}
-                              rightIcon={ <BookOpen/> }
-                              bgColor={"#30A0E0"}
-                              _hover={{
-                                bgColor: useColorModeValue(
-                                  "#2B6CB0",
-                                  "#4A5568"
-                                ),
-                                color: useColorModeValue("white", "#F5F5F5"),
-                              }}
-                            >
-                              Explore EIPs
-                            </Button>
-                          </NextLink>
-                        </Box>
+                        <NextLink href={`/insight/${year}/${getMonth(monthName)}`}>
+                          <Button
+                            size="lg"
+                            variant="outline"
+                            borderColor="#30A0E0"
+                            color="#30A0E0"
+                            rightIcon={<BsGraphUp />}
+                            _hover={{
+                              bg: useColorModeValue("blue.50", "blue.900"),
+                              borderColor: "#2B8AD6",
+                              transform: "translateY(-2px)",
+                              shadow: "lg",
+                            }}
+                            transition="all 0.3s ease"
+                            fontWeight="bold"
+                            px={6}
+                          >
+                            {monthName} {year} Insights
+                          </Button>
+                        </NextLink>
+
+                        <NextLink href={"/all"}>
+                          <Button
+                            size="lg"
+                            variant="ghost"
+                            color="#30A0E0"
+                            rightIcon={<BookOpen size={20} />}
+                            _hover={{
+                              bg: useColorModeValue("blue.50", "blue.900"),
+                              transform: "translateY(-2px)",
+                            }}
+                            transition="all 0.3s ease"
+                            fontWeight="semibold"
+                          >
+                            Explore All
+                          </Button>
+                        </NextLink>
                       </Stack>
                     </Stack>
-                    {/* <BoyGirl2/> */}
                     <BoyGirl3 />
-                    {/* <AllChart type="Total" /> */}
                   </Box>
                   
+                  {/* Desktop Quick Stats */}
                   <Box
-                    borderRadius="md"
+                    mt={16}
+                    borderRadius="2xl"
+                    bg={useColorModeValue("gray.50", "gray.800")}
+                    p={8}
                     id="all"
-                    mt={{ base: 3, lg: 4 }}
                   >
-                    <div className="py-3">
-                      <Header
-                        title="All Categories and Status"
-                        subtitle="Overview"
-                        description="A high-level overview of Ethereum Standards by categories, and status."
-                        sectionId="all"
-                      />
+                    <Box textAlign="center" mb={6}>
+                      <Text 
+                        fontSize="2xl" 
+                        fontWeight="bold" 
+                        color={useColorModeValue("gray.800", "white")}
+                        mb={2}
+                      >
+                        Live Ethereum Standards Overview
+                      </Text>
+                      <Text 
+                        fontSize="md" 
+                        color={useColorModeValue("gray.600", "gray.400")}
+                      >
+                        Real-time statistics across all proposal categories
+                      </Text>
+                    </Box>
+                    <Box overflowX="auto" w="full" minW={{ base: "280px", sm: "400px" }}>
                       <AllChart type="Total" dataset={data} />
-                    </div>
+                    </Box>
                   </Box>
                 </div>
 
-                {/* <AllChart type="Total" /> */}
-
-                <div className="lg:hidden block">
+                {/* Mobile Hero - Optimized for smaller screens */}
+                <div className="lg:hidden block text-center">
                   <Text
-                    className="text-5xl text-center pb-2 sm:text-6xl md:text-7xl"
-                    fontWeight={"bold"}
+                    fontWeight={"black"}
                     color={useColorModeValue(textColorLight, textColorDark)}
                     bgGradient={useColorModeValue(
                       bgGradientLight,
                       bgGradientDark
                     )}
                     bgClip="text"
+                    fontSize={{ base: "3xl", sm: "4xl", md: "5xl" }}
+                    lineHeight="0.95"
+                    letterSpacing="tight"
+                    mb={{ base: 4, sm: 6 }}
                   >
-                    Ethereum <br /> Improvement <br /> Proposals <br /> Insight
+                    Ethereum <br /> Improvement <br /> Proposals <br /> 
+                    <Text 
+                      as="span" 
+                      bgGradient="linear(45deg, #30A0E0, #63B3ED)"
+                      bgClip="text"
+                      fontSize="inherit"
+                      fontWeight="inherit"
+                    >
+                      Insight
+                    </Text>
                   </Text>
-                  <Stack
-                    direction={"row"}
-                    spacing={"3"}
-                    paddingTop={"10"}
-                    justifyContent={"center"}
+                  
+                  <Text 
+                    fontSize={{ base: "md", sm: "lg", md: "xl" }}
+                    color={useColorModeValue("gray.600", "gray.300")}
+                    mb={{ base: 6, sm: 8 }}
+                    px={{ base: 2, sm: 4 }}
+                    maxW="600px"
+                    mx="auto"
+                    lineHeight="1.6"
+                    fontWeight="medium"
                   >
-                    <Box>
-                      <NextLink href={"/home#1"}>
-                        <Button
-                          colorScheme="white"
-                          variant={"outline"}
-                          fontSize={{
-                            lg: "14px",
-                            md: "12px",
-                            sm: "12px",
-                            base: "10px",
-                          }}
-                          fontWeight={"bold"}
-                          padding={{
-                            lg: "10px 20px",
-                            md: "5px 10px",
-                            sm: "5px 10px",
-                            base: "5px 10px",
-                          }}
-                          rightIcon={<BsArrowUpRight />}
-                          bgColor={"#30A0E0"}
-                          _hover={{
-                            bgColor: useColorModeValue("#2B6CB0", "#4A5568"),
-                            color: useColorModeValue("white", "#F5F5F5"),
-                          }}
-                        >
-                          Dashboard
-                        </Button>
-                      </NextLink>
-                    </Box>
+                    Track Ethereum's evolution through comprehensive EIP analytics, 
+                    insights, and community-driven data visualization.
+                  </Text>
 
-                    <Box>
-                      <NextLink
-                        href={`/all`}
+                  <Stack
+                    direction={{ base: "column", sm: "row" }}
+                    spacing={{ base: 3, sm: 4 }}
+                    justifyContent={"center"}
+                    px={{ base: 2, sm: 4 }}
+                    mb={{ base: 6, sm: 8 }}
+                  >
+                    <NextLink href={"/home#dashboard"}>
+                      <Button
+                        bg="linear-gradient(135deg, #30A0E0 0%, #2B8AD6 100%)"
+                        color="white"
+                        rightIcon={<BsArrowUpRight />}
+                        size="lg"
+                        w={{ base: "full", sm: "auto" }}
+                        _hover={{
+                          bg: "linear-gradient(135deg, #2B8AD6 0%, #1A75BB 100%)",
+                          transform: "translateY(-2px)",
+                          shadow: "xl",
+                        }}
+                        transition="all 0.3s ease"
+                        fontWeight="bold"
+                        px={8}
                       >
-                        <Button
-                          colorScheme="blue"
-                          variant={"outline"}
-                          fontSize={{
-                            lg: "14px",
-                            md: "12px",
-                            sm: "12px",
-                            base: "10px",
-                          }}
-                          fontWeight={"bold"}
-                          padding={{
-                            lg: "10px 20px",
-                            md: "5px 10px",
-                            sm: "5px 10px",
-                            base: "5px 10px",
-                          }}
-                          _hover={{
-                            bgColor: useColorModeValue("#2B6CB0", "#4A5568"),
-                            color: useColorModeValue("white", "#F5F5F5"),
-                          }}
-                        >
-                            Explore EIPs
-                        </Button>
-                      </NextLink>
-                    </Box>
-
+                        View Dashboard
+                      </Button>
+                    </NextLink>
+                    <NextLink href={"/all"}>
+                      <Button
+                        variant="outline"
+                        borderColor="#30A0E0"
+                        color="#30A0E0"
+                        rightIcon={<BookOpen size={20} />}
+                        size="lg"
+                        w={{ base: "full", sm: "auto" }}
+                        _hover={{
+                          bg: useColorModeValue("blue.50", "blue.900"),
+                          transform: "translateY(-2px)",
+                        }}
+                        transition="all 0.3s ease"
+                        fontWeight="bold"
+                        px={6}
+                      >
+                        Explore EIPs
+                      </Button>
+                    </NextLink>
                   </Stack>
                   
-                  <div className="mt-6">
-                    <AllChart type="Total" dataset={data} />
-                  </div>
+                  {/* Mobile Quick Stats */}
+                  <Box
+                    mt={8}
+                    borderRadius="xl"
+                    bg={useColorModeValue("gray.50", "gray.800")}
+                    p={6}
+                    mx={-4}
+                  >
+                    <Text 
+                      fontSize="xl" 
+                      fontWeight="bold" 
+                      mb={4}
+                      color={useColorModeValue("gray.800", "white")}
+                    >
+                      Live Overview
+                    </Text>
+                    <Box overflowX="auto" w="full" minW={{ base: "280px", sm: "400px" }}>
+                      <AllChart type="Total" dataset={data} />
+                    </Box>
+                  </Box>
                 </div>
               </Box>
 
-              <Box
-                className="py-2"
-                display={{ base: "block", md: "block", lg: "none" }}
+              {/* 🎯 SECTION 2: WHAT IS EIPSINSIGHT - Educational Context & Credibility */}
+              <Box 
+                py={{ base: 12, lg: 16 }} 
+                id="what"
+                bg={useColorModeValue("white", "gray.900")}
+                borderRadius="2xl"
+                mx={{ base: -3, md: -5, lg: -8 }}
+                px={{ base: 6, md: 8, lg: 12 }}
+                my={8}
+                shadow="lg"
               >
+                <Box textAlign="center" mb={12}>
+                  <Text 
+                    fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+                    fontWeight="bold"
+                    bgGradient="linear(45deg, #30A0E0, #63B3ED)"
+                    bgClip="text"
+                    mb={4}
+                  >
+                    What is EIPsInsight?
+                  </Text>
+                  <Text 
+                    fontSize={{ base: "lg", md: "xl" }}
+                    color={useColorModeValue("gray.600", "gray.300")}
+                    maxW="3xl"
+                    mx="auto"
+                    lineHeight="1.6"
+                  >
+                    A comprehensive platform that visualizes Ethereum proposal activity, 
+                    tracks progress, and monitors editor workloads across the ecosystem.
+                  </Text>
+                </Box>
+
                 <Box
-                  className="w-full lg:px-48 md:px-32 sm:px-24 px-20 py-2 rounded-[0.55rem] hover:border border-blue-500"
-                  bgColor={bg}
+                  display="grid"
+                  gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+                  gap={{ base: 8, lg: 12 }}
+                  alignItems="center"
+                >
+                  {/* Left Side - Video */}
+                  <Box>
+                    <Box
+                      position="relative"
+                      borderRadius="xl"
+                      overflow="hidden"
+                      shadow="2xl"
+                      _hover={{
+                        transform: "scale(1.02)",
+                        shadow: "3xl",
+                      }}
+                      transition="all 0.3s ease"
+                    >
+                      <iframe
+                        width="100%"
+                        height="315"
+                        src="https://www.youtube.com/embed/AyidVR6X6J8?start=8"
+                        title="EIPsInsight Overview"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        style={{ borderRadius: "12px" }}
+                      ></iframe>
+                    </Box>
+                  </Box>
+
+                  {/* Right Side - Enhanced Content */}
+                  <Box>
+                    <Stack spacing={6}>
+                      <Text 
+                        fontSize={{ base: "lg", md: "xl" }}
+                        lineHeight="1.7"
+                        color={useColorModeValue("gray.700", "gray.200")}
+                      >
+                        <Text as="span" fontWeight="bold" color="#30A0E0">
+                          EIPsInsight
+                        </Text> is a comprehensive tooling platform designed to provide 
+                        visual insights into the activity of Ethereum Improvement Proposals (
+                        <NextLink href="/eip">
+                          <Text as="span" color="blue.400" _hover={{ textDecoration: "underline" }}>
+                            EIPs
+                          </Text>
+                        </NextLink>
+                        ), Ethereum Request for Comments (
+                        <NextLink href="/erc">
+                          <Text as="span" color="blue.400" _hover={{ textDecoration: "underline" }}>
+                            ERCs
+                          </Text>
+                        </NextLink>
+                        ), and Rollup Improvement Proposals (
+                        <NextLink href="/rip">
+                          <Text as="span" color="blue.400" _hover={{ textDecoration: "underline" }}>
+                            RIPs
+                          </Text>
+                        </NextLink>
+                        ).
+                      </Text>
+
+                      <Text 
+                        fontSize={{ base: "lg", md: "xl" }}
+                        lineHeight="1.7"
+                        color={useColorModeValue("gray.700", "gray.200")}
+                      >
+                        It helps track proposal progress and workload of{" "}
+                        <NextLink href="/eips/eip-1">
+                          <Text as="span" color="blue.400" _hover={{ textDecoration: "underline" }}>
+                            EIP Editors
+                          </Text>
+                        </NextLink>
+                        , enhancing transparency and efficiency in the review process.
+                      </Text>
+
+                      <NextLink href="/resources">
+                        <Button
+                          size="lg"
+                          variant="outline"
+                          borderColor="#30A0E0"
+                          color="#30A0E0"
+                          rightIcon={<BsArrowUpRight />}
+                          _hover={{
+                            bg: useColorModeValue("blue.50", "blue.900"),
+                            transform: "translateY(-2px)",
+                            shadow: "lg",
+                          }}
+                          transition="all 0.3s ease"
+                          fontWeight="bold"
+                        >
+                          Learn More & Resources
+                        </Button>
+                      </NextLink>
+                    </Stack>
+                  </Box>
+                </Box>
+              </Box>
+
+              {/* 🎯 SECTION 3: QUICK OVERVIEW - Immediate Value Demonstration */}
+              <Box
+                py={{ base: 8, md: 10, lg: 12 }}
+                bg={useColorModeValue("gray.50", "gray.800")}
+                borderRadius="2xl"
+                mx={{ base: -3, md: -5, lg: -8 }}
+                px={{ base: 4, md: 8, lg: 12 }}
+                my={{ base: 6, md: 8 }}
+                id="overview"
+              >
+                <Box textAlign="center" mb={{ base: 6, md: 8 }}>
+                  <Text 
+                    fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
+                    fontWeight="bold"
+                    bgGradient="linear(45deg, #30A0E0, #63B3ED)"
+                    bgClip="text"
+                    mb={{ base: 3, md: 4 }}
+                  >
+                    📊 Live Ethereum Standards Overview
+                  </Text>
+                  <Text 
+                    fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                    color={useColorModeValue("gray.600", "gray.300")}
+                    maxW="2xl"
+                    mx="auto"
+                    px={{ base: 2, md: 0 }}
+                  >
+                    Real-time statistics and insights across all proposal categories
+                  </Text>
+                </Box>
+                
+                <Box
+                  bg={useColorModeValue("white", "gray.700")}
+                  borderRadius="xl"
+                  p={{ base: 4, md: 6 }}
+                  shadow="lg"
+                  overflowX="auto"
+                  minW={{ base: "280px", sm: "400px" }}
+                >
+                  <AllChart type="Total" dataset={data} />
+                </Box>
+              </Box>
+
+              {/* 🎯 SECTION 4: OUR TOOLS - Core Product Showcase */}
+              <Box 
+                py={{ base: 12, lg: 16 }}
+                id="ourtools"
+              >
+                <ToolsSection />
+              </Box>
+
+              {/* 🎯 SECTION 5: LIVE ANALYTICS - Data Insights & Engagement */}
+              <Box py={{ base: 8, md: 10, lg: 12 }} id="statuschanges">
+                <Box textAlign="center" mb={{ base: 6, md: 8 }}>
+                  <Text 
+                    fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
+                    fontWeight="bold"
+                    bgGradient="linear(45deg, #30A0E0, #63B3ED)"
+                    bgClip="text"
+                    mb={{ base: 3, md: 4 }}
+                  >
+                    📈 EIP Status Changes by Year
+                  </Text>
+                  <Text 
+                    fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                    color={useColorModeValue("gray.600", "gray.300")}
+                    maxW="2xl"
+                    mx="auto"
+                    px={{ base: 2, md: 0 }}
+                  >
+                    Track the evolution and progress of Ethereum proposals over time
+                  </Text>
+                </Box>
+                <Box 
+                  bg={useColorModeValue("white", "gray.800")}
+                  borderRadius="xl"
+                  p={{ base: 4, md: 6 }}
+                  shadow="lg"
+                  overflowX="auto"
+                  minW={{ base: "280px", sm: "400px" }}
+                >
+                  <TypeGraphs />
+                </Box>
+              </Box>
+
+              {/* 🎯 SECTION 6: TRENDING CONTENT - Social Proof & Community Activity */}
+              <Box
+                py={{ base: 8, md: 10, lg: 12 }}
+                bg={useColorModeValue("blue.50", "blue.900")}
+                borderRadius="2xl"
+                mx={{ base: -3, md: -5, lg: -8 }}
+                px={{ base: 4, md: 8, lg: 12 }}
+                my={{ base: 6, md: 8 }}
+                position="relative"
+                overflow="hidden"
+              >
+                {/* Subtle background pattern */}
+                <Box
+                  position="absolute"
+                  top="0"
+                  left="0"
+                  right="0"
+                  bottom="0"
+                  opacity="0.1"
+                  bgGradient="radial(circle at 30% 20%, blue.400, transparent 50%)"
+                />
+                <Box position="relative" zIndex="1">
+                  <Clients />
+                </Box>
+              </Box>
+
+              {/* Mobile Search - Utility for mobile users */}
+              <Box
+                display={{ base: "block", md: "block", lg: "none" }}
+                py={{ base: 6, md: 8 }}
+                textAlign="center"
+              >
+                <Text 
+                  fontSize="xl" 
+                  fontWeight="bold" 
+                  mb={4}
+                  color={useColorModeValue("gray.700", "gray.200")}
+                >
+                  🔍 Quick Search
+                </Text>
+                <Text 
+                  fontSize="sm" 
+                  color={useColorModeValue("gray.600", "gray.400")}
+                  mb={4}
+                >
+                  Find EIPs, ERCs, and RIPs instantly
+                </Text>
+                <Box
+                  className="max-w-md mx-auto"
+                  bg={useColorModeValue("white", "gray.700")}
+                  borderRadius="xl"
+                  p={4}
+                  shadow="lg"
+                  border="1px solid"
+                  borderColor={useColorModeValue("gray.200", "gray.600")}
+                  _hover={{
+                    shadow: "xl",
+                    borderColor: useColorModeValue("blue.300", "blue.500"),
+                  }}
+                  transition="all 0.3s ease"
                 >
                   <SearchBox />
                 </Box>
               </Box>
-              <div className="mt-3">
-                <ToolsSection />
-              </div>
-              <div className="mt-4">
-                <Clients />
-              </div>
-<div className="py-6 lg:py-8" id="what">
-  <Header
-    title="What is EIPsInsight?"
-    subtitle="Overview"
-    description="EIPsInsight visualizes Ethereum proposal activity to track progress and editor workloads."
-    sectionId="what"
-  />
-
-  <Box
-    className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center mt-4"
-    borderRadius="md"
-  >
-    {/* Left Side - YouTube Video */}
-    <div className="w-full flex justify-center">
-      <iframe
-        width="100%"
-        height="315"
-        className="rounded-lg max-w-xl"
-        src="https://www.youtube.com/embed/AyidVR6X6J8?start=8"
-        title="EIPsInsight Overview"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
-    </div>
-
-    {/* Right Side - Text Content */}
-    <div className="flex justify-center items-start">
-      <div className="text-left max-w-xl space-y-6">
-<p className="text-xl leading-relaxed" style={{ color: textColor }}>
-  <span style={{ color: linkColor, fontWeight: "600" }}>EIPsInsight</span> is a
-  tooling platform designed to provide visual insights into the activity of
-  Ethereum Improvement Proposals (
-  <NextLink href="/eip">
-    <span  className="text-blue-400">EIPs</span>
-  </NextLink>
-  ), Ethereum Request for Comments (
-  <NextLink href="/erc">
-    <span className="text-blue-400">ERCs</span>
-  </NextLink>
-  ), and Rollup Improvement Proposals (
-  <NextLink href="/rip">
-    <span className="text-blue-400">RIPs</span>
-  </NextLink>
-  ). It helps track proposal progress and workload of
-  <NextLink href="/eips/eip-1">
-    <span className="text-blue-400"> EIP Editors</span>
-  </NextLink>
-  , enhancing transparency and efficiency in the review process.
-</p>
-
-<NextLink href="/resources">
-  <span
-    className="text-xl flex items-center space-x-2 hover:underline"
-  >
-    Learn More <BsArrowUpRight className="pt-1" size={22} />
-  </span>
-</NextLink>
-
-      </div>
-    </div>
-  </Box>
-</div>
 
             </motion.div>
             
-            <div className="py-6" id="statuschanges">
-              <Box>
-                <Header
-                  title="EIP Status Changes by Year"
-                  subtitle="Overview"
-                  description="Insights of EIPs"
-                  sectionId="statuschanges"
-                />
+            {/* 🎯 SECTION 7: COMPREHENSIVE DASHBOARD - Detailed Analytics for Advanced Users */}
+            <Box 
+              id="dashboard" 
+              sx={{ scrollMarginTop: "100px" }}
+              py={{ base: 8, md: 12, lg: 16 }}
+            >
+              <Box textAlign="center" mb={{ base: 8, md: 12 }}>
+                <Text 
+                  fontSize={{ base: "2xl", md: "3xl", lg: "4xl", xl: "5xl" }}
+                  fontWeight="bold"
+                  bgGradient="linear(45deg, #30A0E0, #63B3ED)"
+                  bgClip="text"
+                  mb={{ base: 3, md: 4 }}
+                >
+                  📊 Comprehensive Dashboard
+                </Text>
+                <Text 
+                  fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                  color={useColorModeValue("gray.600", "gray.300")}
+                  maxW="3xl"
+                  mx="auto"
+                  lineHeight="1.6"
+                  px={{ base: 2, md: 0 }}
+                >
+                  Deep dive into Ethereum Standards analytics with detailed metrics across 
+                  all proposal types, statuses, and lifecycle progression.
+                </Text>
               </Box>
-              <Box paddingTop={3} paddingBottom={3}>
-                <TypeGraphs />
-              </Box>
-            </div>
-            <Box id="dashboard" sx={{ scrollMarginTop: "100px" }}>
+
               <Box
-                // bg="rgba(0, 0, 0, 0.5)"
-                borderRadius="md" // Rounded corners
-                // padding={6} // Padding around the text
-                // boxShadow="md"
-                // className="border border-red-700"
-                maxWidth="100%"
-                overflow="hidden"
-                mx="auto"
+                bg={useColorModeValue("white", "gray.800")}
+                borderRadius="2xl"
+                p={{ base: 4, md: 6, lg: 8 }}
+                shadow="xl"
+                border="1px solid"
+                borderColor={useColorModeValue("gray.200", "gray.600")}
+                overflowX="auto"
+                minW={{ base: "280px", sm: "400px" }}
               >
-                  <Box>
-                    <Header
-                      title="Dashboard"
-                      subtitle="Welcome to Dashboard"
-                      description="A high-level overview of Ethereum Standards by type, status, and lifecycle progress.
-"
-                      sectionId="dashboard"
-                    />
-                  </Box>
-
-                  <Box>
-                    {/*<Button*/}
-                    {/*    colorScheme="blue"*/}
-                    {/*    variant="outline"*/}
-                    {/*    fontSize={{lg:'14px',md:'12px', sm:'12px',base:'10px'}}*/}
-                    {/*    fontWeight={'bold'}*/}
-                    {/*    padding={{lg:'10px 20px',md:'5px 10px', sm:'5px 10px',base:'5px 10px'}}*/}
-                    {/*>*/}
-                    {/*  <DownloadIcon marginEnd={'1.5'} />*/}
-                    {/*  Download Reports*/}
-                    {/*</Button>*/}
-                  </Box>
-               
-
                 <Box
                   display="grid"
-                  gridTemplateColumns={{ lg: "repeat(2, 1fr)" }}
-                  gap={"4"}
-                  marginTop={"6px"}
+                  gridTemplateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+                  gap={{ base: 4, md: 6 }}
+                  mt={{ base: 4, md: 6 }}
                 >
                   <div className="grid grid-cols-2 gap-4">
                     <div className="col-span-2">

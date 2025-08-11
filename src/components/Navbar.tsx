@@ -498,23 +498,23 @@ const Navbar: React.FC = () => {
 
         <Box className={"lg:hidden md:block sm:block block"}>
           <Flex
-            minH={"60px"}
-            py={{ base: 2 }}
+            minH={{ base: "48px", sm: "52px", md: "56px" }}
+            py={{ base: 1, sm: 1.5, md: 2 }}
             borderBottom={1}
             borderStyle={"solid"}
             borderColor={useColorModeValue("gray.200", "gray.900")}
             align={"center"}
             justifyContent={"space-evenly"}
-            className={"mx-10"}
+            className={{ base: "mx-4", sm: "mx-6", md: "mx-10" }}
           >
             <Flex flex={{ base: 1, md: "auto" }} ml={{ base: -2 }}>
               <IconButton
                 onClick={onToggle}
                 icon={
                   isOpen ? (
-                    <CloseIcon w={5} h={5} />
+                    <CloseIcon w={{ base: 4, sm: 5 }} h={{ base: 4, sm: 5 }} />
                   ) : (
-                    <HamburgerIcon w={8} h={8} />
+                    <HamburgerIcon w={{ base: 6, sm: 7, md: 8 }} h={{ base: 6, sm: 7, md: 8 }} />
                   )
                 }
                 variant={"ghost"}
@@ -528,8 +528,9 @@ const Navbar: React.FC = () => {
                 <Text
                   textAlign={useBreakpointValue({ base: "center", md: "left" })}
                   color={useColorModeValue("gray.800", "white")}
-                  ml={4}
-                  mt={6}
+                  ml={{ base: 2, sm: 3, md: 4 }}
+                  mt={{ base: 4, sm: 5, md: 6 }}
+                  fontSize={{ base: "sm", sm: "md", md: "lg" }}
                   className="font-bold hover:opacity-25 cursor-pointer ease-in duration-150 pt-1"
                 >
                   EIPs <br /> Insights
